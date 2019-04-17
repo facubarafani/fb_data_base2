@@ -52,8 +52,10 @@ SELECT last_name, first_name
 	FROM actor
 WHERE actor_id IN (SELECT actor_id
 				FROM film_actor INNER JOIN film USING(film_id)
-				WHERE film.title = 'BETRAYED REAR'
-				AND film.title <> 'CATCH AMISTAD');
+				WHERE film.title = 'BETRAYED REAR')
+AND actor_id NOT IN (SELECT actor_id
+					FROM film_actor INNER JOIN film using(film_id)
+					WHERE film.title = 'CATCH AMISTAD');
 
 -- Ex 7
 
