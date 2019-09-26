@@ -26,7 +26,8 @@ SELECT *
 
 SELECT description
 	FROM film
-	WHERE description LIKE '%Epic%';
+	WHERE description LIKE '%Epic%'
+	AND description LIKE '%a%';
 	
 CREATE FULLTEXT INDEX filmDescription ON film(description);
 
@@ -34,4 +35,4 @@ DROP INDEX filmDescription ON film;
 
 SELECT description
 	FROM film
-	WHERE MATCH(description) AGAINST('Epic');
+	WHERE MATCH(description) AGAINST('Epic,a');
