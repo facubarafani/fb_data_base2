@@ -300,11 +300,11 @@ Returns:
 
 { "_id" : "Mace Tyrell", "counter" : 909 }
 
-12) > db.movies.aggregate([{'$group':{_id:'$title','counter':{$sum:1}}},{'$count':'numOfMovies'}])
+12) > db.movies.aggregate([{'$match':{year:{'$gte':1851,'$lte':1900}}},{'$count':'counter'}])
 
 Returns:
 
-{ "numOfMovies" : 41497 }
+{ "counter" : 100 }
 
 13) > db.movies.aggregate([{'$lookup':{from:'comments',localField:'_id',foreignField:'movie_id',as:'movie_comments'}},{'$match':{'title':'The Story of the Kelly Gang'}},{'$project':{names:'$movie_comments.name'}}]).pretty()
 
