@@ -1,0 +1,313 @@
+1) > db.movies.find({directors:['Auguste Lumière', 'Louis Lumière']})
+
+Returns:
+{ "_id" : ObjectId("573a1390f29313caabcd413b"), "title" : "The Arrival of a Train", "year" : 1896, "runtime" : 1, "released" : ISODate("1896-01-01T00:00:00Z"), "poster" : "https://m.media-amazon.com/images/M/MV5BZjE2MGVkMTAtMWIwYy00YzQ5LWE2YTAtMTU2NGJmNGNjY2IyXkEyXkFqcGdeQXVyNjMxMzM3NDI@._V1_SY1000_SX677_AL_.jpg", "plot" : "A group of people are standing in a straight line along the platform of a railway station, waiting for a train, which is seen coming at some distance. When the train stops at the platform, ...", "fullplot" : "A group of people are standing in a straight line along the platform of a railway station, waiting for a train, which is seen coming at some distance. When the train stops at the platform, the line dissolves. The doors of the railway-cars open, and people on the platform help passengers to get off.", "lastupdated" : "2015-08-15 00:02:53.443000000", "type" : "movie", "directors" : [ "Auguste Lumière", "Louis Lumière" ], "imdb" : { "rating" : 7.3, "votes" : 5043, "id" : 12 }, "countries" : [ "France" ], "genres" : [ "Documentary", "Short" ], "tomatoes" : { "viewer" : { "rating" : 3.7, "numReviews" : 59 }, "lastUpdated" : ISODate("2015-09-11T17:46:29Z") }, "num_mflix_comments" : 1 }
+{ "_id" : ObjectId("573a13a2f29313caabd0a5bc"), "title" : "The Arrival of a Train", "year" : 1896, "runtime" : 1, "released" : ISODate("1896-01-01T00:00:00Z"), "poster" : "https://m.media-amazon.com/images/M/MV5BZjE2MGVkMTAtMWIwYy00YzQ5LWE2YTAtMTU2NGJmNGNjY2IyXkEyXkFqcGdeQXVyNjMxMzM3NDI@._V1_SY1000_SX677_AL_.jpg", "plot" : "A group of people are standing in a straight line along the platform of a railway station, waiting for a train, which is seen coming at some distance. When the train stops at the platform, ...", "fullplot" : "A group of people are standing in a straight line along the platform of a railway station, waiting for a train, which is seen coming at some distance. When the train stops at the platform, the line dissolves. The doors of the railway-cars open, and people on the platform help passengers to get off.", "lastupdated" : "2015-08-30 21:28:20.020000000", "type" : "movie", "directors" : [ "Auguste Lumière", "Louis Lumière" ], "imdb" : { "rating" : 7.3, "votes" : 5128, "id" : 12 }, "countries" : [ "France" ], "genres" : [ "Documentary", "Short" ], "num_mflix_comments" : 2 }
+
+2) > db.theaters.find({'location.address.city':'Bloomington'}).pretty();
+
+Returns:
+
+{
+	"_id" : ObjectId("59a47286cfa9a3a73e51e72c"),
+	"theaterId" : 1000,
+	"location" : {
+		"address" : {
+			"street1" : "340 W Market",
+			"city" : "Bloomington",
+			"state" : "MN",
+			"zipcode" : "55425"
+		},
+		"geo" : {
+			"type" : "Point",
+			"coordinates" : [
+				-93.24565,
+				44.85466
+			]
+		}
+	}
+}
+{
+	"_id" : ObjectId("59a47287cfa9a3a73e51e99d"),
+	"theaterId" : 2716,
+	"location" : {
+		"address" : {
+			"street1" : "2856 E 3rd St",
+			"street2" : "#C10D",
+			"city" : "Bloomington",
+			"state" : "IN",
+			"zipcode" : "47401"
+		},
+		"geo" : {
+			"type" : "Point",
+			"coordinates" : [
+				-86.495262,
+				39.164202
+			]
+		}
+	}
+}
+{
+	"_id" : ObjectId("59a47287cfa9a3a73e51e9d7"),
+	"theaterId" : 2765,
+	"location" : {
+		"address" : {
+			"street1" : "1615 East Empire St",
+			"street2" : "#1410",
+			"city" : "Bloomington",
+			"state" : "IL",
+			"zipcode" : "61701"
+		},
+		"geo" : {
+			"type" : "Point",
+			"coordinates" : [
+				-88.956401,
+				40.485889
+			]
+		}
+	}
+}
+{
+	"_id" : ObjectId("59a47287cfa9a3a73e51eb75"),
+	"theaterId" : 49,
+	"location" : {
+		"address" : {
+			"street1" : "2103 N Veterans Pkwy",
+			"street2" : "Ste 200",
+			"city" : "Bloomington",
+			"state" : "IL",
+			"zipcode" : "61704"
+		},
+		"geo" : {
+			"type" : "Point",
+			"coordinates" : [
+				-88.951569,
+				40.504742
+			]
+		}
+	}
+}
+{
+	"_id" : ObjectId("59a47287cfa9a3a73e51ecfe"),
+	"theaterId" : 858,
+	"location" : {
+		"address" : {
+			"street1" : "2721 E 3rd St",
+			"city" : "Bloomington",
+			"state" : "IN",
+			"zipcode" : "47401"
+		},
+		"geo" : {
+			"type" : "Point",
+			"coordinates" : [
+				-86.497787,
+				39.165169
+			]
+		}
+	}
+}
+
+3) > db.theaters.find({'location.address.city':'Bloomington'},{_id:1,theaterId:1}).pretty();
+
+Returns:
+
+{ "_id" : ObjectId("59a47286cfa9a3a73e51e72c"), "theaterId" : 1000 }
+{ "_id" : ObjectId("59a47287cfa9a3a73e51e99d"), "theaterId" : 2716 }
+{ "_id" : ObjectId("59a47287cfa9a3a73e51e9d7"), "theaterId" : 2765 }
+{ "_id" : ObjectId("59a47287cfa9a3a73e51eb75"), "theaterId" : 49 }
+{ "_id" : ObjectId("59a47287cfa9a3a73e51ecfe"), "theaterId" : 858 }
+
+4) > db.movies.aggregate([{'$lookup':{from:'comments',localField:'_id',foreignField:'movie_id',as:'movie_comments'}},{'$match':{'title':'Pauvre Pierrot'}}]).pretty()
+
+Returns:
+
+{
+	"_id" : ObjectId("573a1390f29313caabcd4136"),
+	"title" : "Pauvre Pierrot",
+	"year" : 1892,
+	"runtime" : 4,
+	"released" : ISODate("1892-10-28T00:00:00Z"),
+	"plot" : "One night, Arlequin come to see his lover Colombine. But then Pierrot knocks at the door and Colombine and Arlequin hide. Pierrot starts singing but Arlequin scares him and the poor man goes away.",
+	"fullplot" : "One night, Arlequin come to see his lover Colombine. But then Pierrot knocks at the door and Colombine and Arlequin hide. Pierrot starts singing but Arlequin scares him and the poor man goes away.",
+	"lastupdated" : "2015-08-12 00:06:02.720000000",
+	"type" : "movie",
+	"directors" : [
+		"èmile Reynaud"
+	],
+	"imdb" : {
+		"rating" : 6.7,
+		"votes" : 566,
+		"id" : 3
+	},
+	"countries" : [
+		"France"
+	],
+	"genres" : [
+		"Animation",
+		"Comedy",
+		"Short"
+	],
+	"movie_comments" : [ ]
+}
+
+5) > db.movies.find({year:{'$in':[1801,1900]}},{title:1,year:1}).pretty()
+
+Returns:
+
+{
+	"_id" : ObjectId("573a1390f29313caabcd4256"),
+	"title" : "Grandma's Reading Glass",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a1390f29313caabcd4274"),
+	"title" : "Let Me Dream Again",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a139bf29313caabcf4633"),
+	"title" : "The One-Man Band",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a2f29313caabd0ab0d"),
+	"title" : "Panorama of Eiffel Tower",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a5f29313caabd14316"),
+	"title" : "Why Jones Discharged His Clerks",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a6f29313caabd179c4"),
+	"title" : "The Kiss",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a7f29313caabd1b9f7"),
+	"title" : "Bombardment of Taku Forts, by the Allied Fleets",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a7f29313caabd1ba13"),
+	"title" : "Champs de Mars",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a7f29313caabd1ba8b"),
+	"title" : "Eiffel Tower from Trocadero Palace",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a8f29313caabd1d402"),
+	"title" : "Bird's-Eye View of Dock Front, Galveston",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a8f29313caabd1d638"),
+	"title" : "Palace of Electricity",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13a8f29313caabd1d6c3"),
+	"title" : "Scene from the Elevator Ascending Eiffel Tower",
+	"year" : 1900
+}
+{
+	"_id" : ObjectId("573a13aaf29313caabd21985"),
+	"title" : "Gymnasium Exercises and Drill at Newport Training School",
+	"year" : 1900
+}
+
+6) > db.movies.find().sort({year:1}).limit(1).pretty()
+
+Returns:
+
+{
+	"_id" : ObjectId("573a13e7f29313caabdc863a"),
+	"title" : "Passage de Venus",
+	"year" : 1874,
+	"plot" : "Record of the transit of the planet Venus across the Sun.",
+	"fullplot" : "Record of the transit of the planet Venus across the Sun.",
+	"lastupdated" : "2015-08-20 00:01:31.580000000",
+	"type" : "movie",
+	"directors" : [
+		"P.J.C. Janssen"
+	],
+	"imdb" : {
+		"rating" : 6.6,
+		"votes" : 167,
+		"id" : 3155794
+	},
+	"countries" : [
+		"France"
+	],
+	"genres" : [
+		"Documentary",
+		"Short"
+	]
+}
+
+7) > db.theaters.find({'location.address.city':'Bloomington'}).count()
+
+Returns:
+
+5
+
+8) > db.movies.aggregate([{'$lookup':{from:'comments',localField:'_id',foreignField:'movie_id',as:'movie_comments'}},{'$match':{'title':'Pauvre Pierrot'}},{'$group':{_id:'$movie_comments','numOfComments':{$sum:1}}}]).pretty()
+
+Returns:
+
+{ "_id" : [ ], "numOfComments" : 1 }
+
+9) > db.movies.aggregate([{'$match':{'num_mflix_comments':{'$gte':5}}},{'$project':{_id:0,title:'$title'}}]).pretty()
+
+Returns:
+
+{ "title" : "The Matrimaniac" }
+{ "title" : "Daydreams" }
+{ "title" : "Sherlock Jr." }
+{
+	"title" : "Kino-pravda no. 21 - Leninskaia Kino-pravda. Kinopoema o Lenine"
+}
+{ "title" : "The Divine Woman" }
+{ "title" : "Pesn o geroyakh" }
+{ "title" : "Frisco Kid" }
+{ "title" : "Modern Times" }
+{ "title" : "Three Little Wolves" }
+{ "title" : "Nancy Drew... Reporter" }
+{ "title" : "They Made Me a Criminal" }
+{ "title" : "The Wizard of Oz" }
+{ "title" : "The Big Store" }
+{ "title" : "So Ends Our Night" }
+{ "title" : "Five Graves to Cairo" }
+{ "title" : "Mystery of the 13th Guest" }
+{ "title" : "My Darling Clementine" }
+{ "title" : "The Red House" }
+{ "title" : "The Big Hangover" }
+{ "title" : "Cinderella" }
+
+10) > db.theaters.aggregate([{'$match':{'location.address.state':'MN'}},{'$count':'numOfTheaters'}])
+
+Returns:
+
+{ "numOfTheaters" : 44 }
+
+11) > db.comments.aggregate([{'$group':{_id:'$name','counter':{$sum:1}}},{'$sort':{'counter':-1}},{'$limit':1}])
+
+Returns:
+
+{ "_id" : "Mace Tyrell", "counter" : 909 }
+
+12) > db.movies.aggregate([{'$group':{_id:'$title','counter':{$sum:1}}},{'$count':'numOfMovies'}])
+
+Returns:
+
+{ "numOfMovies" : 41497 }
+
+13) > db.movies.aggregate([{'$lookup':{from:'comments',localField:'_id',foreignField:'movie_id',as:'movie_comments'}},{'$match':{'title':'The Story of the Kelly Gang'}},{'$project':{names:'$movie_comments.name'}}]).pretty()
+
+Returns:
+
+{ "_id" : ObjectId("573a1390f29313caabcd4386"), "names" : [ ] }

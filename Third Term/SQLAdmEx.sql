@@ -8,7 +8,7 @@
 -- Login again with data_analyst and try again the update done in step 4. Show the result.
 
 -- 1
-
+USE mysql;
 CREATE USER data_analyst@'%'
 IDENTIFIED BY 'password';
 
@@ -17,7 +17,7 @@ IDENTIFIED BY 'password';
 GRANT SELECT,UPDATE,DELETE ON sakila.* 
 TO data_analyst@'%';
 
-SHOWS GRANTS FOR data_analyst@'%';
+SHOW GRANTS FOR data_analyst@'%';
 
 -- 3
 
